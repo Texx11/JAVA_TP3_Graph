@@ -3,16 +3,20 @@ import java.util.Set;
 
 public class Arete {
     private int weight;
+    private String id; //For CSS pusposes
     private Sommet sommet1;
     private Sommet sommet2;
     private final Set<Sommet> pairSommet;
+    private int angle; //Angle de la ligne
 
-    public Arete(Sommet sommet1, Sommet sommet2) {
+    public Arete(Sommet sommet1, Sommet sommet2, int angle) {
         this.sommet1 = sommet1;
         this.sommet2 = sommet2;
+        this.angle = angle;
         this.pairSommet = new HashSet<Sommet>();
         pairSommet.add(sommet1);
         pairSommet.add(sommet2);
+        this.id = sommet1.getNom() + "-" + sommet2.getNom();
         calculWeight();
     }
 
@@ -51,5 +55,21 @@ public class Arete {
     }
     public Set<Sommet> getPairSommet() {
         return pairSommet;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getAngle() {
+        return angle;
+    }
+
+    public void setAngle(int angle) {
+        this.angle = angle;
     }
 }
